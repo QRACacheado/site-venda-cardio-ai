@@ -51,6 +51,34 @@ export const translations = {
     // Download Buttons
     download_ios: "Baixar na App Store",
     download_android: "Baixar na Play Store",
+    
+    // Daily Routine Card
+    daily_routine: "Rotina de Hoje",
+    medication: "Medicamento",
+    meal: "Refeição",
+    checkup: "Check-up",
+    taken: "Tomado",
+    evaluated: "Avaliada",
+    pending: "Pendente",
+    tasks_complete: "de 3 tarefas completas",
+    
+    // Navigation
+    nav_reviews: "Avaliações",
+    nav_contact: "Contato",
+    
+    // Reviews Section
+    reviews_title: "O Que Nossos Usuários Dizem",
+    reviews_subtitle: "Milhares de pessoas já confiam no Cardio - AI",
+    
+    // Contact Section
+    contact_title: "Entre em Contato",
+    contact_subtitle: "Estamos aqui para ajudar você",
+    contact_name: "Nome",
+    contact_email: "E-mail",
+    contact_message: "Mensagem",
+    contact_send: "Enviar Mensagem",
+    contact_success: "Mensagem enviada com sucesso!",
+    contact_error: "Erro ao enviar mensagem. Tente novamente.",
   },
   
   en: {
@@ -102,6 +130,34 @@ export const translations = {
     // Download Buttons
     download_ios: "Download on App Store",
     download_android: "Get it on Play Store",
+    
+    // Daily Routine Card
+    daily_routine: "Today's Routine",
+    medication: "Medication",
+    meal: "Meal",
+    checkup: "Check-up",
+    taken: "Taken",
+    evaluated: "Evaluated",
+    pending: "Pending",
+    tasks_complete: "of 3 tasks complete",
+    
+    // Navigation
+    nav_reviews: "Reviews",
+    nav_contact: "Contact",
+    
+    // Reviews Section
+    reviews_title: "What Our Users Say",
+    reviews_subtitle: "Thousands of people already trust Cardio - AI",
+    
+    // Contact Section
+    contact_title: "Get in Touch",
+    contact_subtitle: "We're here to help you",
+    contact_name: "Name",
+    contact_email: "Email",
+    contact_message: "Message",
+    contact_send: "Send Message",
+    contact_success: "Message sent successfully!",
+    contact_error: "Error sending message. Please try again.",
   },
   
   es: {
@@ -153,6 +209,34 @@ export const translations = {
     // Download Buttons
     download_ios: "Descargar en App Store",
     download_android: "Descargar en Play Store",
+    
+    // Daily Routine Card
+    daily_routine: "Rutina de Hoy",
+    medication: "Medicamento",
+    meal: "Comida",
+    checkup: "Revisión",
+    taken: "Tomado",
+    evaluated: "Evaluada",
+    pending: "Pendiente",
+    tasks_complete: "de 3 tareas completas",
+    
+    // Navigation
+    nav_reviews: "Reseñas",
+    nav_contact: "Contacto",
+    
+    // Reviews Section
+    reviews_title: "Lo Que Dicen Nuestros Usuarios",
+    reviews_subtitle: "Miles de personas ya confían en Cardio - AI",
+    
+    // Contact Section
+    contact_title: "Ponte en Contacto",
+    contact_subtitle: "Estamos aquí para ayudarte",
+    contact_name: "Nombre",
+    contact_email: "Correo Electrónico",
+    contact_message: "Mensaje",
+    contact_send: "Enviar Mensaje",
+    contact_success: "¡Mensaje enviado con éxito!",
+    contact_error: "Error al enviar el mensaje. Inténtalo de nuevo.",
   },
   
   nl: {
@@ -204,6 +288,34 @@ export const translations = {
     // Download Buttons
     download_ios: "Download op App Store",
     download_android: "Download op Play Store",
+    
+    // Daily Routine Card
+    daily_routine: "Routine van Vandaag",
+    medication: "Medicijn",
+    meal: "Maaltijd",
+    checkup: "Controle",
+    taken: "Ingenomen",
+    evaluated: "Geëvalueerd",
+    pending: "In Behandeling",
+    tasks_complete: "van 3 taken voltooid",
+    
+    // Navigation
+    nav_reviews: "Beoordelingen",
+    nav_contact: "Contact",
+    
+    // Reviews Section
+    reviews_title: "Wat Onze Gebruikers Zeggen",
+    reviews_subtitle: "Duizenden mensen vertrouwen Cardio - AI al",
+    
+    // Contact Section
+    contact_title: "Neem Contact Op",
+    contact_subtitle: "We zijn er om u te helpen",
+    contact_name: "Naam",
+    contact_email: "E-mail",
+    contact_message: "Bericht",
+    contact_send: "Bericht Verzenden",
+    contact_success: "Bericht succesvol verzonden!",
+    contact_error: "Fout bij het verzenden van bericht. Probeer het opnieuw.",
   },
   
   fr: {
@@ -255,6 +367,34 @@ export const translations = {
     // Download Buttons
     download_ios: "Télécharger sur App Store",
     download_android: "Télécharger sur Play Store",
+    
+    // Daily Routine Card
+    daily_routine: "Routine d'Aujourd'hui",
+    medication: "Médicament",
+    meal: "Repas",
+    checkup: "Bilan de Santé",
+    taken: "Pris",
+    evaluated: "Évalué",
+    pending: "En Attente",
+    tasks_complete: "sur 3 tâches terminées",
+    
+    // Navigation
+    nav_reviews: "Avis",
+    nav_contact: "Contact",
+    
+    // Reviews Section
+    reviews_title: "Ce Que Disent Nos Utilisateurs",
+    reviews_subtitle: "Des milliers de personnes font déjà confiance à Cardio - AI",
+    
+    // Contact Section
+    contact_title: "Contactez-Nous",
+    contact_subtitle: "Nous sommes là pour vous aider",
+    contact_name: "Nom",
+    contact_email: "E-mail",
+    contact_message: "Message",
+    contact_send: "Envoyer le Message",
+    contact_success: "Message envoyé avec succès!",
+    contact_error: "Erreur lors de l'envoi du message. Veuillez réessayer.",
   },
 };
 
