@@ -69,6 +69,14 @@ export const translations = {
     // Reviews Section
     reviews_title: "O Que Nossos Usuários Dizem",
     reviews_subtitle: "Milhares de pessoas já confiam no Cardio - AI",
+    review_form_title: "Deixe Sua Avaliação",
+    review_form_subtitle: "Compartilhe sua experiência com o Cardio - AI",
+    review_name: "Seu Nome",
+    review_rating: "Avaliação",
+    review_comment: "Seu Comentário",
+    review_submit: "Enviar Avaliação",
+    review_success: "Avaliação enviada com sucesso! Obrigado pelo feedback.",
+    review_error: "Erro ao enviar avaliação. Tente novamente.",
     
     // Contact Section
     contact_title: "Entre em Contato",
@@ -148,6 +156,14 @@ export const translations = {
     // Reviews Section
     reviews_title: "What Our Users Say",
     reviews_subtitle: "Thousands of people already trust Cardio - AI",
+    review_form_title: "Leave Your Review",
+    review_form_subtitle: "Share your experience with Cardio - AI",
+    review_name: "Your Name",
+    review_rating: "Rating",
+    review_comment: "Your Comment",
+    review_submit: "Submit Review",
+    review_success: "Review submitted successfully! Thank you for your feedback.",
+    review_error: "Error submitting review. Please try again.",
     
     // Contact Section
     contact_title: "Get in Touch",
@@ -227,6 +243,14 @@ export const translations = {
     // Reviews Section
     reviews_title: "Lo Que Dicen Nuestros Usuarios",
     reviews_subtitle: "Miles de personas ya confían en Cardio - AI",
+    review_form_title: "Deja Tu Reseña",
+    review_form_subtitle: "Comparte tu experiencia con Cardio - AI",
+    review_name: "Tu Nombre",
+    review_rating: "Calificación",
+    review_comment: "Tu Comentario",
+    review_submit: "Enviar Reseña",
+    review_success: "¡Reseña enviada con éxito! Gracias por tu opinión.",
+    review_error: "Error al enviar reseña. Inténtalo de nuevo.",
     
     // Contact Section
     contact_title: "Ponte en Contacto",
@@ -306,6 +330,14 @@ export const translations = {
     // Reviews Section
     reviews_title: "Wat Onze Gebruikers Zeggen",
     reviews_subtitle: "Duizenden mensen vertrouwen Cardio - AI al",
+    review_form_title: "Laat Uw Beoordeling Achter",
+    review_form_subtitle: "Deel uw ervaring met Cardio - AI",
+    review_name: "Uw Naam",
+    review_rating: "Beoordeling",
+    review_comment: "Uw Commentaar",
+    review_submit: "Beoordeling Indienen",
+    review_success: "Beoordeling succesvol ingediend! Bedankt voor uw feedback.",
+    review_error: "Fout bij het indienen van beoordeling. Probeer het opnieuw.",
     
     // Contact Section
     contact_title: "Neem Contact Op",
@@ -385,6 +417,14 @@ export const translations = {
     // Reviews Section
     reviews_title: "Ce Que Disent Nos Utilisateurs",
     reviews_subtitle: "Des milliers de personnes font déjà confiance à Cardio - AI",
+    review_form_title: "Laissez Votre Avis",
+    review_form_subtitle: "Partagez votre expérience avec Cardio - AI",
+    review_name: "Votre Nom",
+    review_rating: "Évaluation",
+    review_comment: "Votre Commentaire",
+    review_submit: "Soumettre l'Avis",
+    review_success: "Avis soumis avec succès! Merci pour votre retour.",
+    review_error: "Erreur lors de la soumission de l'avis. Veuillez réessayer.",
     
     // Contact Section
     contact_title: "Contactez-Nous",

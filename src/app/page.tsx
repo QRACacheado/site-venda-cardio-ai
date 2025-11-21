@@ -9,6 +9,8 @@ export default function Home() {
   const [language, setLanguage] = useState<Language>('pt');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [reviewData, setReviewData] = useState({ name: '', rating: 5, comment: '' });
+  const [reviewStatus, setReviewStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const t = getTranslation(language);
 
   const languages: { code: Language; label: string }[] = [
@@ -38,6 +40,28 @@ export default function Home() {
       }
     } catch (error) {
       setFormStatus('error');
+    }
+  };
+
+  const handleReviewSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setReviewStatus('idle');
+    
+    try {
+      const response = await fetch('/api/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reviewData),
+      });
+
+      if (response.ok) {
+        setReviewStatus('success');
+        setReviewData({ name: '', rating: 5, comment: '' });
+      } else {
+        setReviewStatus('error');
+      }
+    } catch (error) {
+      setReviewStatus('error');
     }
   };
 
@@ -295,7 +319,7 @@ export default function Home() {
             <p className="text-xl text-gray-600">{t.reviews_subtitle}</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {reviews.map((review, index) => (
               <div
                 key={index}
@@ -320,6 +344,97 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Review Form */}
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-3xl p-8 md:p-12 border-2 border-rose-200">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold mb-2 bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent">
+                  {t.review_form_title}
+                </h3>
+                <p className="text-gray-600">{t.review_form_subtitle}</p>
+              </div>
+
+              <form onSubmit={handleReviewSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="review-name" className="block text-sm font-medium text-gray-700 mb-2">
+                    {t.review_name}
+                  </label>
+                  <input
+                    type="text"
+                    id="review-name"
+                    required
+                    value={reviewData.name}
+                    onChange={(e) => setReviewData({ ...reviewData, name: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-rose-200 focus:border-rose-500 focus:outline-none transition-colors"
+                    placeholder={t.review_name}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="review-rating" className="block text-sm font-medium text-gray-700 mb-2">
+                    {t.review_rating}
+                  </label>
+                  <div className="flex items-center gap-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setReviewData({ ...reviewData, rating: star })}
+                        className="transition-transform hover:scale-110"
+                      >
+                        <Star
+                          className={`w-8 h-8 ${
+                            star <= reviewData.rating
+                              ? 'text-yellow-400 fill-yellow-400'
+                              : 'text-gray-300'
+                          }`}
+                        />
+                      </button>
+                    ))}
+                    <span className="ml-2 text-gray-600 font-medium">
+                      {reviewData.rating}/5
+                    </span>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="review-comment" className="block text-sm font-medium text-gray-700 mb-2">
+                    {t.review_comment}
+                  </label>
+                  <textarea
+                    id="review-comment"
+                    required
+                    rows={5}
+                    value={reviewData.comment}
+                    onChange={(e) => setReviewData({ ...reviewData, comment: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-rose-200 focus:border-rose-500 focus:outline-none transition-colors resize-none"
+                    placeholder={t.review_comment}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full px-8 py-4 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-2xl font-semibold text-lg shadow-2xl hover:shadow-rose-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                >
+                  <Star className="w-5 h-5" />
+                  {t.review_submit}
+                </button>
+
+                {reviewStatus === 'success' && (
+                  <div className="p-4 bg-green-50 border-2 border-green-200 rounded-xl text-green-700 text-center font-medium">
+                    {t.review_success}
+                  </div>
+                )}
+
+                {reviewStatus === 'error' && (
+                  <div className="p-4 bg-red-50 border-2 border-red-200 rounded-xl text-red-700 text-center font-medium">
+                    {t.review_error}
+                  </div>
+                )}
+              </form>
+            </div>
           </div>
         </div>
       </section>
