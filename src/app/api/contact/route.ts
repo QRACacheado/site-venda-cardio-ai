@@ -17,8 +17,8 @@ export async function POST(request: Request) {
 
     // Enviar email usando Resend
     try {
-      await resend.emails.send({
-        from: 'Cardio-AI <onboarding@resend.dev>', // Email verificado no Resend
+      const data = await resend.emails.send({
+        from: 'Cardio-AI <noreply@contact.cardio-ai.app>', // DOMÍNIO VERIFICADO
         to: 'cardioai.contact@gmail.com',
         replyTo: email,
         subject: `Nova mensagem de contato - ${name}`,
@@ -38,11 +38,13 @@ export async function POST(request: Request) {
         `,
       });
 
+      console.log("Email enviado:", data);
+
       return NextResponse.json(
         { success: true, message: 'Mensagem enviada com sucesso!' },
         { status: 200 }
       );
-    } catch (emailError) {
+    } catch (emailError: any) {
       console.error('Erro ao enviar email:', emailError);
       return NextResponse.json(
         { error: 'Erro ao enviar email. Verifique a configuração do Resend.' },
