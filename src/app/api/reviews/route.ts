@@ -51,7 +51,7 @@ export async function POST(request: Request) {
     // Enviar notificação de nova avaliação por email
     try {
       await resend.emails.send({
-        from: 'Cardio-AI <onboarding@resend.dev>',
+        from: 'Cardio-AI <no-reply@contact.cardio-ai.app>', // <-- ADAPTADO
         to: 'cardioai.contact@gmail.com',
         subject: `Nova Avaliação - ${rating} estrelas de ${name}`,
         html: `
