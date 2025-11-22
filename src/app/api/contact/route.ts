@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     // Enviar email de notificação
     try {
       await resend.emails.send({
-        from: 'Cardio-AI <onboarding@resend.dev>',
+        from: 'Cardio-AI <no-reply@contact.cardio-ai.app>', // <-- ADAPTADO
         to: 'cardioai.contact@gmail.com',
         subject: `Nova Mensagem de Contato - ${name}`,
         html: `
@@ -43,6 +43,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Erro ao processar contato:', error);
-    return NextResponse.json({ error: 'Erro ao processar contato' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Erro ao processar contato' },
+      { status: 500 }
+    );
   }
 }
