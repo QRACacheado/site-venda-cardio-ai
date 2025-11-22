@@ -42,7 +42,7 @@ export const translations = {
     
     // CTA Section
     cta_title: "Pronto para Cuidar do Seu Coração?",
-    cta_subtitle: "Junte-se a milhares de usuários que já confiam no Cardio - AI",
+    cta_subtitle: "Junte-se a outros que já confiam no Cardio - AI",
     
     // Footer
     footer_tagline: "Tecnologia que cuida de você",
@@ -68,7 +68,7 @@ export const translations = {
     
     // Reviews Section
     reviews_title: "O Que Nossos Usuários Dizem",
-    reviews_subtitle: "Milhares de pessoas já confiam no Cardio - AI",
+    reviews_subtitle: "Junte-se a outros que já confiam no Cardio - AI",
     review_form_title: "Deixe Sua Avaliação",
     review_form_subtitle: "Compartilhe sua experiência com o Cardio - AI",
     review_name: "Seu Nome",
@@ -129,7 +129,7 @@ export const translations = {
     
     // CTA Section
     cta_title: "Ready to Take Care of Your Heart?",
-    cta_subtitle: "Join thousands of users who already trust Cardio - AI",
+    cta_subtitle: "Join others who already trust Cardio - AI",
     
     // Footer
     footer_tagline: "Technology that cares for you",
@@ -155,7 +155,7 @@ export const translations = {
     
     // Reviews Section
     reviews_title: "What Our Users Say",
-    reviews_subtitle: "Thousands of people already trust Cardio - AI",
+    reviews_subtitle: "Join others who already trust Cardio - AI",
     review_form_title: "Leave Your Review",
     review_form_subtitle: "Share your experience with Cardio - AI",
     review_name: "Your Name",
@@ -216,7 +216,7 @@ export const translations = {
     
     // CTA Section
     cta_title: "¿Listo para Cuidar tu Corazón?",
-    cta_subtitle: "Únete a miles de usuarios que ya confían en Cardio - AI",
+    cta_subtitle: "Únete a otros que ya confían en Cardio - AI",
     
     // Footer
     footer_tagline: "Tecnología que cuida de ti",
@@ -242,7 +242,7 @@ export const translations = {
     
     // Reviews Section
     reviews_title: "Lo Que Dicen Nuestros Usuarios",
-    reviews_subtitle: "Miles de personas ya confían en Cardio - AI",
+    reviews_subtitle: "Únete a otros que ya confían en Cardio - AI",
     review_form_title: "Deja Tu Reseña",
     review_form_subtitle: "Comparte tu experiencia con Cardio - AI",
     review_name: "Tu Nombre",
@@ -303,7 +303,7 @@ export const translations = {
     
     // CTA Section
     cta_title: "Klaar om voor Uw Hart te Zorgen?",
-    cta_subtitle: "Sluit u aan bij duizenden gebruikers die Cardio - AI al vertrouwen",
+    cta_subtitle: "Sluit u aan bij anderen die Cardio - AI al vertrouwen",
     
     // Footer
     footer_tagline: "Technologie die voor u zorgt",
@@ -329,7 +329,7 @@ export const translations = {
     
     // Reviews Section
     reviews_title: "Wat Onze Gebruikers Zeggen",
-    reviews_subtitle: "Duizenden mensen vertrouwen Cardio - AI al",
+    reviews_subtitle: "Sluit u aan bij anderen die Cardio - AI al vertrouwen",
     review_form_title: "Laat Uw Beoordeling Achter",
     review_form_subtitle: "Deel uw ervaring met Cardio - AI",
     review_name: "Uw Naam",
@@ -390,7 +390,7 @@ export const translations = {
     
     // CTA Section
     cta_title: "Prêt à Prendre Soin de Votre Cœur?",
-    cta_subtitle: "Rejoignez des milliers d'utilisateurs qui font déjà confiance à Cardio - AI",
+    cta_subtitle: "Rejoignez d'autres qui font déjà confiance à Cardio - AI",
     
     // Footer
     footer_tagline: "Technologie qui prend soin de vous",
@@ -416,7 +416,7 @@ export const translations = {
     
     // Reviews Section
     reviews_title: "Ce Que Disent Nos Utilisateurs",
-    reviews_subtitle: "Des milliers de personnes font déjà confiance à Cardio - AI",
+    reviews_subtitle: "Rejoignez d'autres qui font déjà confiance à Cardio - AI",
     review_form_title: "Laissez Votre Avis",
     review_form_subtitle: "Partagez votre expérience avec Cardio - AI",
     review_name: "Votre Nom",

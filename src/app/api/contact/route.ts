@@ -1,61 +1,48 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { createClient } from '@supabase/supabase-js';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(request: Request) {
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
+
+export async function POST(request: NextRequest) {
   try {
     const { name, email, message } = await request.json();
 
-    // Validação básica
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: 'Todos os campos são obrigatórios' },
-        { status: 400 }
-      );
+    // Salvar no Supabase
+    const { error: dbError } = await supabase
+      .from('contacts')
+      .insert([{ name, email, message }]);
+
+    if (dbError) {
+      console.error('Erro ao salvar contato no Supabase:', dbError);
     }
 
-    // Enviar email usando Resend
+    // Enviar email de notificação
     try {
-      const data = await resend.emails.send({
-        from: 'Cardio-AI <noreply@contact.cardio-ai.app>', // DOMÍNIO VERIFICADO
+      await resend.emails.send({
+        from: 'Cardio-AI <onboarding@resend.dev>',
         to: 'cardioai.contact@gmail.com',
-        replyTo: email,
-        subject: `Nova mensagem de contato - ${name}`,
+        subject: `Nova Mensagem de Contato - ${name}`,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #e11d48;">Nova Mensagem de Contato</h2>
-            <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <p><strong>Nome:</strong> ${name}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Mensagem:</strong></p>
-              <p style="white-space: pre-wrap;">${message}</p>
-            </div>
-            <p style="color: #6b7280; font-size: 12px;">
-              Enviado em: ${new Date().toLocaleString('pt-BR')}
-            </p>
-          </div>
+          <h2>Nova Mensagem de Contato</h2>
+          <p><strong>Nome:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Mensagem:</strong></p>
+          <p>${message}</p>
         `,
       });
-
-      console.log("Email enviado:", data);
-
-      return NextResponse.json(
-        { success: true, message: 'Mensagem enviada com sucesso!' },
-        { status: 200 }
-      );
-    } catch (emailError: any) {
+    } catch (emailError) {
       console.error('Erro ao enviar email:', emailError);
-      return NextResponse.json(
-        { error: 'Erro ao enviar email. Verifique a configuração do Resend.' },
-        { status: 500 }
-      );
     }
+
+    return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Erro ao processar mensagem de contato:', error);
-    return NextResponse.json(
-      { error: 'Erro ao enviar mensagem' },
-      { status: 500 }
-    );
+    console.error('Erro ao processar contato:', error);
+    return NextResponse.json({ error: 'Erro ao processar contato' }, { status: 500 });
   }
 }

@@ -1,32 +1,57 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { createClient } from '@supabase/supabase-js';
 
-// ⚠️ IMPORTANTE: use o domínio verificado do Resend
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Cliente Supabase com SERVICE_ROLE_KEY para operações de backend
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 export async function POST(request: Request) {
   try {
     const { name, rating, comment } = await request.json();
 
-    // Validação
+    // Validação básica
     if (!name || !rating || !comment) {
       return NextResponse.json(
-        { error: 'Todos os campos são obrigatórios.' },
+        { error: 'Todos os campos são obrigatórios' },
         { status: 400 }
       );
     }
 
     if (rating < 1 || rating > 5) {
       return NextResponse.json(
-        { error: 'Avaliação deve ser entre 1 e 5 estrelas.' },
+        { error: 'Avaliação deve ser entre 1 e 5 estrelas' },
         { status: 400 }
       );
     }
 
-    // 🔥 Enviar email usando Resend
+    // Salvar review na tabela 'reviews' do Supabase
+    const { data: reviewData, error: dbError } = await supabase
+      .from('reviews')
+      .insert({
+        name,
+        rating,
+        comment,
+      })
+      .select()
+      .single();
+
+    if (dbError) {
+      console.error('Erro ao salvar review no Supabase:', dbError);
+      return NextResponse.json(
+        { error: 'Erro ao salvar avaliação no banco de dados' },
+        { status: 500 }
+      );
+    }
+
+    // Enviar notificação de nova avaliação por email
     try {
-      const response = await resend.emails.send({
-        from: 'Cardio-AI <noreply@contact.cardio-ai.app>', // DOMÍNIO CORRETO
+      await resend.emails.send({
+        from: 'Cardio-AI <onboarding@resend.dev>',
         to: 'cardioai.contact@gmail.com',
         subject: `Nova Avaliação - ${rating} estrelas de ${name}`,
         html: `
@@ -36,9 +61,7 @@ export async function POST(request: Request) {
               <p><strong>Nome:</strong> ${name}</p>
               <p><strong>Avaliação:</strong> ${'⭐'.repeat(rating)} (${rating}/5)</p>
               <p><strong>Comentário:</strong></p>
-              <p style="white-space: pre-wrap; background: #fff; padding: 12px; border-radius: 6px;">
-                ${comment}
-              </p>
+              <p style="white-space: pre-wrap; background: white; padding: 15px; border-radius: 6px;">${comment}</p>
             </div>
             <p style="color: #6b7280; font-size: 12px;">
               Enviado em: ${new Date().toLocaleString('pt-BR')}
@@ -46,26 +69,23 @@ export async function POST(request: Request) {
           </div>
         `,
       });
-
-      console.log("Email de avaliação enviado:", response);
-
-      return NextResponse.json(
-        { success: true, message: 'Avaliação enviada com sucesso!' },
-        { status: 200 }
-      );
-
-    } catch (emailError: any) {
+    } catch (emailError) {
       console.error('Erro ao enviar email de avaliação:', emailError);
-      return NextResponse.json(
-        { error: 'Erro ao enviar email. Verifique sua configuração do Resend.' },
-        { status: 500 }
-      );
+      // Continua mesmo se o email falhar, pois o review já foi salvo
     }
 
-  } catch (error) {
-    console.error('Erro geral no endpoint /reviews:', error);
     return NextResponse.json(
-      { error: 'Erro interno ao enviar avaliação.' },
+      { 
+        success: true, 
+        message: 'Avaliação enviada com sucesso!',
+        data: reviewData 
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error('Erro ao processar avaliação:', error);
+    return NextResponse.json(
+      { error: 'Erro ao enviar avaliação' },
       { status: 500 }
     );
   }
